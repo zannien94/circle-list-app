@@ -13,6 +13,9 @@ function App() {
   }
 
   const handleRemoveLastCircle = (): void => {
+    if (!circleList.length) {
+      return
+    }
     const newCircleList = [...circleList]
     newCircleList.pop()
     setCircleList(newCircleList)
