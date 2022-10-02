@@ -1,31 +1,16 @@
-import { useState } from 'react'
 import { Stack } from '@mui/system'
 import Circle from './components/Circle'
 import Buttons from './components/Buttons'
-import { getRandomColor } from './utils/helpers'
+import { useCircles } from './hooks/useCirclesContext'
 
 function App() {
-  const [circleList, setCircleList] = useState<string[]>([])
-
-  const handleAddCircle = (): void => {
-    const bgColor = getRandomColor()
-    setCircleList([...circleList, bgColor])
-  }
-
-  const handleRemoveLastCircle = (): void => {
-    if (!circleList.length) {
-      return
-    }
-    const newCircleList = [...circleList]
-    newCircleList.pop()
-    setCircleList(newCircleList)
-  }
+  const { circleList, onAddCircle, onRemoveLastCircle } = useCircles()
 
   return (
     <div>
       <Buttons
-        onAddCircle={handleAddCircle}
-        onRemoveLastCircle={handleRemoveLastCircle}
+        onAddCircle={onAddCircle}
+        onRemoveLastCircle={onRemoveLastCircle}
       />
       <Stack flexDirection='row' flexWrap='wrap'>
         {circleList.map((bgColor, index) => (
