@@ -5,21 +5,31 @@ import './App.css'
 import styled from '@emotion/styled'
 import { Stack } from '@mui/system'
 
-const StyledCircle = styled.div`
+const StyledCircle = styled.div<{ bgColor: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: yellow;
+  background-color: ${(props) => props.bgColor};
 `
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}
 
 function App() {
   const [circleList, setCircleList] = useState<string[]>([])
 
   const handleAddCircle = (): void => {
-    setCircleList([...circleList, 'lorem ipsum'])
+    const bgColor = getRandomColor()
+    setCircleList([...circleList, bgColor])
   }
 
   const handleRemoveLastCircle = (): void => {
@@ -35,8 +45,10 @@ function App() {
         <Button onClick={handleRemoveLastCircle}>Remove Last Circle</Button>
       </ButtonGroup>
       <Stack flexDirection='row' flexWrap='wrap'>
-        {circleList.map((circle, i) => (
-          <StyledCircle key={i}>{circle}</StyledCircle>
+        {circleList.map((bgColor, index) => (
+          <StyledCircle key={`${bgColor}${index}`} bgColor={bgColor}>
+            lorem ipsum
+          </StyledCircle>
         ))}
       </Stack>
     </div>
