@@ -7,17 +7,24 @@ function App() {
   const { circleList, onAddCircle, onRemoveLastCircle } = useCircles()
 
   return (
-    <div>
+    <Stack alignItems='center' padding={4}>
       <Buttons
         onAddCircle={onAddCircle}
         onRemoveLastCircle={onRemoveLastCircle}
       />
-      <Stack flexDirection='row' flexWrap='wrap'>
+      <Stack
+        width='100%'
+        flexDirection='row'
+        flexWrap='wrap'
+        alignItems='flex-start'
+        gap={2}
+        marginTop={3}
+      >
         {circleList.map((bgColor, index) => (
           <Circle key={`${bgColor}${index}`} bgColor={bgColor} />
         ))}
       </Stack>
-    </div>
+    </Stack>
   )
 }
 
