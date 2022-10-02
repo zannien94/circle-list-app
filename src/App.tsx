@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
 import { Stack } from '@mui/system'
 import Circle from './components/Circle'
+import Buttons from './components/Buttons'
 import './App.css'
 
 function getRandomColor() {
@@ -30,10 +29,10 @@ function App() {
 
   return (
     <div className='App'>
-      <ButtonGroup variant='outlined'>
-        <Button onClick={handleAddCircle}>Add Circle</Button>
-        <Button onClick={handleRemoveLastCircle}>Remove Last Circle</Button>
-      </ButtonGroup>
+      <Buttons
+        onAddCircle={handleAddCircle}
+        onRemoveLastCircle={handleRemoveLastCircle}
+      />
       <Stack flexDirection='row' flexWrap='wrap'>
         {circleList.map((bgColor, index) => (
           <Circle key={`${bgColor}${index}`} bgColor={bgColor} />
