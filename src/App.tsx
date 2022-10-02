@@ -1,19 +1,9 @@
 import { useState } from 'react'
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
-import './App.css'
-import styled from '@emotion/styled'
 import { Stack } from '@mui/system'
-
-const StyledCircle = styled.div<{ bgColor: string }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: ${(props) => props.bgColor};
-`
+import Circle from './components/Circle'
+import './App.css'
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF'
@@ -46,9 +36,7 @@ function App() {
       </ButtonGroup>
       <Stack flexDirection='row' flexWrap='wrap'>
         {circleList.map((bgColor, index) => (
-          <StyledCircle key={`${bgColor}${index}`} bgColor={bgColor}>
-            lorem ipsum
-          </StyledCircle>
+          <Circle key={`${bgColor}${index}`} bgColor={bgColor} />
         ))}
       </Stack>
     </div>
