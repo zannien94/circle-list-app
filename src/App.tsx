@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Stack } from '@mui/system'
 import Circle from './components/Circle'
 import Buttons from './components/Buttons'
-import './App.css'
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF'
@@ -28,7 +27,7 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div>
       <Buttons
         onAddCircle={handleAddCircle}
         onRemoveLastCircle={handleRemoveLastCircle}
